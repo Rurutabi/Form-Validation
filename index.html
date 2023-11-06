@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <title>Form-Validation</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading-container">
+        <h1>Form Validation</h1>
+        <img src="/img/odinnobackground.png" alt="" />
+      </div>
+
+      <!-- Email, Country, Zip Code, Password and Password Confirmation fields -->
+      <div class="content-container">
+        <div class="form-container">
+          <form action="">
+            <!-- Form inputs -->
+            <div class="content">
+              <label for="email">Email:</label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="content">
+              <label for="country">Country:</label>
+              <input type="text" name="country" required />
+            </div>
+            <div class="content">
+              <label for="zipcode">Zip-Code:</label>
+              <input type="number" name="zipcode" required />
+            </div>
+            <div class="content">
+              <label for="password">Password:</label>
+              <input type="password" name="password" />
+            </div>
+
+            <div class="content">
+              <label for="password">Password Confirmation:</label>
+              <input type="password" name="password" />
+            </div>
+            <!-- Submit button -->
+            <button class="content" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
