@@ -46,17 +46,18 @@ img {
 .content-container {
   display: flex;
   flex: 2;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: #dee7ec;
+  background-color: #171f24;
 }
 
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  width: 500px;
+  height: 500px;
   margin-left: 15px;
   flex-direction: column;
   padding: 12px;
@@ -65,10 +66,19 @@ img {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   margin-top: 12px;
 }
 
 button {
   padding: 8px;
-  background-color: chartreuse;
+  background-color: yellow;
+}
+
+input:invalid {
+  border: 2px solid red;
+}
+input:valid {
+  border: 2px solid green;
 }
