@@ -2,6 +2,7 @@
 
 class formValidation {
   email = document.querySelector('.email');
+  country = document.querySelector('.country');
   allInput = document.querySelectorAll('input');
   form = document.querySelector('form');
   asianCountries = [
@@ -35,6 +36,7 @@ class formValidation {
 
   constructor() {
     this._emailValidation();
+    this._countryValidation();
     this._checkEmpty();
   }
 
@@ -47,6 +49,19 @@ class formValidation {
         );
       } else {
         this.email.setCustomValidity('');
+      }
+
+      this._checkEmpty();
+    });
+  }
+
+  //Country
+  _countryValidation() {
+    this.country.addEventListener('input', event => {
+      if (!this.asianCountries.includes(this.country.value)) {
+        this.country.setCustomValidity('Pick one Asian country');
+      } else {
+        this.country.setCustomValidity('');
       }
 
       this._checkEmpty();
