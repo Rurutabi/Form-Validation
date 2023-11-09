@@ -3,6 +3,7 @@
 class formValidation {
   email = document.querySelector('.email');
   country = document.querySelector('.country');
+  zipCode = document.querySelector('.zipcode');
   allInput = document.querySelectorAll('input');
   form = document.querySelector('form');
   asianCountries = [
@@ -38,8 +39,20 @@ class formValidation {
     this._emailValidation();
     this._countryValidation();
     this._checkEmpty();
+    this._zipCode();
   }
 
+  _zipCode() {
+    this.zipCode.addEventListener('input', event => {
+      if (this.zipCode.value.length > 8) {
+        this.zipCode.setCustomValidity('Maximum range is 8');
+      } else if (this.zipCode.value.length < 4) {
+        this.zipCode.setCustomValidity('Minimum range is 4');
+      } else {
+        this.zipCode.setCustomValidity('');
+      }
+    });
+  }
   //Email
   _emailValidation() {
     this.email.addEventListener('input', event => {
@@ -59,12 +72,10 @@ class formValidation {
   _countryValidation() {
     this.country.addEventListener('input', event => {
       if (!this.asianCountries.includes(this.country.value)) {
-        this.country.setCustomValidity('Pick one Asian country');
+        this.country.setCustomValidity('Pick one of the Asian countries');
       } else {
         this.country.setCustomValidity('');
       }
-
-      this._checkEmpty();
     });
   }
 
