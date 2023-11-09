@@ -2,6 +2,8 @@
 
 class formValidation {
   email = document.querySelector('.email');
+  password = document.querySelector('.password');
+  conPassword = document.querySelector('.confirm-password');
   country = document.querySelector('.country');
   zipCode = document.querySelector('.zipcode');
   allInput = document.querySelectorAll('input');
@@ -34,12 +36,42 @@ class formValidation {
     'Kuwait',
     'Bahrain',
   ];
+  upperPattern = /[A-Z]/;
+  numberPattern = /[0-9]/;
 
   constructor() {
     this._emailValidation();
     this._countryValidation();
     this._checkEmpty();
     this._zipCode();
+    this._passwordValidation();
+    this._confirmValidation();
+  }
+
+  _confirmValidation() {
+    this.conPassword.addEventListener('input', e => {
+      if (this.conPassword.value !== this.password.value) {
+        this.conPassword.setCustomValidity('Password do not match');
+      } else {
+        this.conPassword.setCustomValidity('');
+      }
+    });
+  }
+
+  _passwordValidation() {
+    this.password.addEventListener('input', e => {
+      if (
+        this.password.value.length < 8 ||
+        !this.upperPattern.test(this.password.value) ||
+        !this.numberPattern.test(this.password.value)
+      ) {
+        this.password.setCustomValidity(
+          'Password must be at least 8 characters, 1 Uppercase and 1 Number'
+        );
+      } else {
+        this.password.setCustomValidity('');
+      }
+    });
   }
 
   _zipCode() {
@@ -60,11 +92,11 @@ class formValidation {
         this.email.setCustomValidity(
           'Please enter your email: turtle@gmail.com'
         );
+      } else if (this.email.validity.valueMissing) {
+        this.email.setCustomValidity('Please fill in the blank');
       } else {
         this.email.setCustomValidity('');
       }
-
-      this._checkEmpty();
     });
   }
 
